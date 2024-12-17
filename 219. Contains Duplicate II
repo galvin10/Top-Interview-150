@@ -1,0 +1,35 @@
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+
+        Map <Integer,Integer> hash = new HashMap<>();
+
+        for(int i=0; i<nums.length; i++)
+        {
+
+            if(!hash.containsKey(nums[i]))
+            {
+                hash.put(nums[i],i);
+            }
+
+            else
+            {
+                int past = hash.get(nums[i]);
+                if(Math.abs(past - i) <= k)
+                {
+                    return true;
+                }
+                else
+                {
+                    hash.put(nums[i],i);
+                }
+
+            }
+
+            
+
+        }
+
+        return false;
+        
+    }
+}
